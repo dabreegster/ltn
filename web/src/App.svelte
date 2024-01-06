@@ -87,6 +87,12 @@
       hash
       bind:map
       on:error={(e) => console.log(e.detail.error)}
+      images={[
+        { id: "walk_cycle_only", url: "/filters/walk_cycle_only_icon.gif" },
+        { id: "no_entry", url: "/filters/no_entry_icon.gif" },
+        { id: "bus_gate", url: "/filters/bus_gate_icon.gif" },
+        { id: "school_street", url: "/filters/school_street_icon.gif" },
+      ]}
     >
       <div bind:this={mapDiv} />
       {#if $app}

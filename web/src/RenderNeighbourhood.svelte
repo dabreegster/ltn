@@ -2,6 +2,7 @@
   import type { Feature, FeatureCollection } from "geojson";
   import {
     CircleLayer,
+    SymbolLayer,
     FillLayer,
     GeoJSON,
     hoverStateFilter,
@@ -16,7 +17,7 @@
   import { showBasemap } from "./stores";
 
   export let gjInput: FeatureCollection;
-  // When disabled, can't click lines or circles, no slots, no hoverCursor
+  // When disabled, can't click lines or filters, no slots, no hoverCursor
   export let interactive = true;
   export let onClickLine = (f: Feature) => {};
   export let onClickCircle = (f: Feature) => {};
@@ -102,22 +103,22 @@
   </LineLayer>
 
   <CircleLayer
-    filter={isPoint}
+    filter={["all", isPoint, ["==", ["get", "kind"], "border_intersection"]]}
     paint={{
       "circle-radius": 15,
-      "circle-color": constructMatchExpression(
-        ["get", "kind"],
-        {
-          border_intersection: "green",
-          modal_filter: "black",
-        },
-        "red"
-      ),
+      "circle-color": "green",
+    }}
+  />
+
+  <SymbolLayer
+    filter={["all", isPoint, ["==", ["get", "kind"], "modal_filter"]]}
+    layout={{
+      "icon-image": ["get", "filter_kind"],
     }}
     on:click={(e) => interactive && onClickCircle(e.detail.features[0])}
   >
     {#if interactive}
       <slot name="circle-popup" />
     {/if}
-  </CircleLayer>
+  </SymbolLayer>
 </GeoJSON>
