@@ -50,7 +50,9 @@
     <About />
 
     <h1>Choose your study area</h1>
-    <button on:click={() => ($showAbout = true)}>About the LTN tool</button>
+    <button class="btn btn-primary" on:click={() => ($showAbout = true)}
+      >About the LTN tool</button
+    >
 
     {#if mapLoader}
       <div>

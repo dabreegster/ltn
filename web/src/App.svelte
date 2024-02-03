@@ -1,4 +1,5 @@
 <script lang="ts">
+  import "./common/tailwind.css";
   import initLtn from "backend";
   import type { Map } from "maplibre-gl";
   import initRouteSnapper from "route-snapper";
@@ -124,9 +125,3 @@
     </MapLibre>
   </div>
 </Layout>
-
-<style>
-  :global(body, button, input) {
-    font-size: 26px;
-  }
-</style>
