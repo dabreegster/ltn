@@ -50,15 +50,20 @@
     <About />
 
     <h1>Choose your study area</h1>
-    <button on:click={() => ($showAbout = true)}>About the LTN tool</button>
+    <button class="btn btn-primary" on:click={() => ($showAbout = true)}
+      >About the LTN tool</button
+    >
 
     {#if mapLoader}
-      <div>
-        <label>
-          Load a project from a file
-          <input bind:this={fileInput} on:change={loadFile} type="file" />
-        </label>
-      </div>
+      <label class="form-label border">
+        Load a project from a file
+        <input
+          class="form-control"
+          bind:this={fileInput}
+          on:change={loadFile}
+          type="file"
+        />
+      </label>
     {/if}
 
     <hr />

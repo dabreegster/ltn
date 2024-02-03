@@ -108,9 +108,22 @@
 
 <SplitComponent>
   <div slot="sidebar">
-    <h1>
-      Editing modal filters in {notNull(notNull(boundary).properties).name}
-    </h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#" on:click={() => ($mode = { mode: "title" })}
+            >Pick study area</a
+          >
+        </li>
+        <li class="breadcrumb-item">
+          <a href="#" on:click={pickNewNeighbourhood}>Pick neighbourhood</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          Editing modal filters in {notNull(notNull(boundary).properties).name}
+        </li>
+      </ol>
+    </nav>
+
     <p>
       Now that you've defined a neighbourhood boundary, you can see the possible
       shortcuts that vehicles are currently able to take through it. You can add
@@ -118,16 +131,6 @@
       what's reachable for drivers without leaving the boundary you've drawn.
     </p>
 
-    <div>
-      <button on:click={() => ($mode = { mode: "title" })}
-        >Start over and change your study area</button
-      >
-    </div>
-    <div>
-      <button on:click={pickNewNeighbourhood}
-        >Pick a different neighbourhood boundary</button
-      >
-    </div>
     <div>
       <button
         on:click={() =>
