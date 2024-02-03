@@ -1,4 +1,5 @@
 <script lang="ts">
+  import FileInput from "../ui/FileInput.svelte";
   import { LngLat } from "maplibre-gl";
   import { LTN } from "backend";
   import { onMount } from "svelte";
@@ -141,12 +142,9 @@
 
 <i>or...</i>
 
-<div>
-  <label>
-    Load an osm.xml or a .pbf file:
-    <input bind:this={fileInput} on:change={loadFile} type="file" />
-  </label>
-</div>
+<FileInput bind:fileInput on:change={loadFile}
+  >Load an osm.xml or a .pbf file</FileInput
+>
 
 <i>or...</i>
 

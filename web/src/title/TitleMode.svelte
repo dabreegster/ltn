@@ -1,4 +1,5 @@
 <script lang="ts">
+  import FileInput from "../ui/FileInput.svelte";
   import type { Feature } from "geojson";
   import { overpassQueryForPolygon } from "../common";
   import PolygonToolLayer from "../common/draw_polygon/PolygonToolLayer.svelte";
@@ -55,17 +56,9 @@
     >
 
     {#if mapLoader}
-      <label class="form-control w-full max-w-xs">
-        <div class="label">
-          <span class="label-text">Load a project from a file</span>
-        </div>
-        <input
-          type="file"
-          class="file-input file-input-bordered w-full max-w-xs"
-          bind:this={fileInput}
-          on:change={loadFile}
-        />
-      </label>
+      <FileInput bind:fileInput on:change={loadFile}
+        >Load a project from a file</FileInput
+      >
     {/if}
 
     <hr />
