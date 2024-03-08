@@ -70,5 +70,7 @@ export function autosave() {
   if (!key) {
     window.alert("Autosave failed; no projectName set?!");
   }
-  window.localStorage.setItem(key, get(app)!.toSavefile());
+  let gj = JSON.parse(get(app)!.toSavefile());
+  gj.basemap_style = get(maptilerBasemap);
+  window.localStorage.setItem(key, JSON.stringify(gj));
 }

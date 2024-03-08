@@ -13,6 +13,7 @@ import {
   route_tool,
   route_pt_a,
   route_pt_b,
+  maptilerBasemap,
 } from "../stores";
 
 export async function loadFromLocalStorage(key: string) {
@@ -28,6 +29,10 @@ export async function loadFromLocalStorage(key: string) {
     // TODO Rename savefile -> project? Or combine this call with the constructor?
     get(app)!.loadSavefile(gj);
     console.timeEnd("load");
+
+    if (gj.basemap_style) {
+      maptilerBasemap.set(gj.basemap_style);
+    }
 
     afterProjectLoaded();
   } catch (err) {
